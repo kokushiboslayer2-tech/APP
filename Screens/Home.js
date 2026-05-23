@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, RefreshControl, Image } from 'react-native';
+import { View, Text, StyleSheet, RefreshControl, Image, Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/native';
 import { ScrollView } from "react-native";
-
+const {width} = Dimensions.get('window');
 const Home = () => {
 
   const isFocused = useIsFocused();

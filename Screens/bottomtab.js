@@ -1,5 +1,5 @@
 import React,{ useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Platform, Settings } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Platform,  } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
@@ -78,7 +78,7 @@ const BottomTabs = () => {
 
         <Tab.Screen name="Home" component={Home}/>
         <Tab.Screen name="Add Device" component={ChooseHardware}/>    
-        <Tab.Screen name="Settings" component={Settings}/>        
+        <Tab.Screen name="Settings" component={SettingsStack}/>        
         </Tab.Navigator>
     );
 };
