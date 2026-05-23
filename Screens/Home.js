@@ -83,11 +83,11 @@ const deviceImages = [
   require('../assets/assets/AppIcons/Bulb.png'),
   require('../assets/assets/AppIcons/Speaker.png'),
   require('../assets/assets/AppIcons/Charging.png'),
-  require('../assets/assets/AppIcons/smart door.png'),
-  require('C:\Users\shubh\TodoLIST\assets\assets\AppIcons\tv.png'),
-  require('../assets/assets/AppIcons/security system.png'),
+  require('../assets/assets/AppIcons/smartdoor.png'),
+  require('../assets/assets/AppIcons/tv.png'),
+  require('../assets/assets/AppIcons/securitysystem.png'),
   require('../assets/assets/AppIcons/robotvaccum.png'),
-  require('../assets/AppIcons/Others.png'),
+  require('../assets/assets/AppIcons/Others.png'),
 ];
 
 const renderItem = ({ item }) => (
@@ -141,7 +141,7 @@ const DeviceInfo = ({
       style={styles.statusDisconnected}>
     </View>}
     <View style={styles.deviceActionIcon}>
-      <Image source={require('../assets/pl.png')} style={styles.deviceActionImage} />
+      <Image source={require('../assets/assets/AppIcons/p1.png')} style={styles.deviceActionImage} />
     </View>
   </TouchableOpacity>
 );
