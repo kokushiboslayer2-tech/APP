@@ -10,7 +10,7 @@ const ChooseHardware = ({navigation}) => {
   useEffect(() => {
     const fetchToken = async () => {
       try {
-        const storedLoginResponse = await AsyncStorage.getItem('loginResposne');
+        const storedLoginResponse = await AsyncStorage.getItem('loginResponse');
         if (storedLoginResponse) {
           const parsedResponse = JSON.parse(storedLoginResponse);
           return parsedResponse.result[0].token;
