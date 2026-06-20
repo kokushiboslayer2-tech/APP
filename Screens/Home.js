@@ -12,7 +12,7 @@ const Home = () => {
   const [devicesResponse, setDevicesResponse] = useState(null);
   const [token, setToken] = useState('');
   const [refreshing, setRefreshing] = useState(false);
-
+  const onRefresh = async () => { setRefreshing(true); await fetchData(); setRefreshing(false); };
   useEffect(() => {
     if (isFocused) {
       fetchData();

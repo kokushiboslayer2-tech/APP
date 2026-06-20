@@ -50,7 +50,7 @@ const LoginScreen = (props) => {
             if (result.statusCode === 200 && result.result && result.result.length > 0) {
                 await AsyncStorage.setItem('loginResponse', JSON.stringify(result));
                 console.log(result);
-                props.navigation.navigate("Drawer");
+                props.navigation.navigate("MainScreen");
             } else {
                 console.error("Login failed");
             }
@@ -110,14 +110,14 @@ const LoginScreen = (props) => {
                 </View>
 
 
-                <TouchableOpacity style={styles.AddDevice} onPress={handleLogin}>
+                <TouchableOpacity style={styles.AddDevice} onPress={() => props.navigation.replace('MainScreen')}>
                     <Text style={styles.loginText}>Login</Text>
                 </TouchableOpacity>
 
 
                 <View style={styles.row}>
                     <Text style={styles.signupText}>Don’t have an account? </Text>
-                    <TouchableOpacity onPress={() => props.navigation.replace('RegisterScreen')}>
+                    <TouchableOpacity onPress={() => props.navigation.replace('SignUp')}>
                         <Text style={styles.link}>Sign up</Text>
                     </TouchableOpacity>
                 </View>
@@ -148,17 +148,17 @@ const styles = StyleSheet.create({
     },
     lottieAnimation: {
         width: 250,
-        height: 250,
+        height: 150,
     },
     formContainer: {
         width: '100%',
         backgroundColor: 'white',
         height: '60%',
-        paddingTop: '10%',
+        padding: 20,
         paddingHorizontal: 20,
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60,
-        marginTop: 30,
+        marginTop: 10,
     },
     inputContainer: {
         marginBottom: 20,

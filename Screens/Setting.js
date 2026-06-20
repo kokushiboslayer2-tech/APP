@@ -35,3 +35,4 @@ const styles = StyleSheet.create({
     maxWidth: width * 0.8,
   },
 });
+export default Setting;
