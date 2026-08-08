@@ -11,23 +11,20 @@ import {
 import LottieView from 'lottie-react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
 const { height, width } = Dimensions.get("window");
-
 
 const LoginScreen = (props) => {
     const [username, setUsername] = useState({ value: 'Avanish.MSJCR0639', error: '' });
     const [password, setPassword] = useState({ value: '', error: '' });
 
-
     const handleLogin = async () => {
         try {
-            const apiUrl = 'https://test.moonr.com/LMSService/api/Account/getUserToken';
+            const apiUrl = 'http://moonhub.moonpreneur.com/LMSService/api/Account/getUserToken';
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Security-key': 'X2DPR-RO1WTR-98007-PRS70-VEQ12Y',
+                    'Security-key': 'IOI2R-RO1WTR-PMQWRT-PRS70-L2TPN',
                 },
                 body: JSON.stringify({
                     userName: username.value,
@@ -37,15 +34,12 @@ const LoginScreen = (props) => {
                 }),
             });
 
-
             if (!response.ok) {
                 console.error(`HTTP error! Status: ${response.status}`);
                 return;
             }
 
-
             const result = await response.json();
-
 
             if (result.statusCode === 200 && result.result && result.result.length > 0) {
                 await AsyncStorage.setItem('loginResponse', JSON.stringify(result));
@@ -60,11 +54,8 @@ const LoginScreen = (props) => {
     };
 
 
-
-
     return (
         <ScrollView contentContainerStyle={styles.container}>
-
 
             <View style={styles.headerContainer}>
                 <Text style={styles.headerText}>Login</Text>
@@ -74,7 +65,6 @@ const LoginScreen = (props) => {
                     style={styles.lottieAnimation}
                 />
             </View>
-
 
             <View style={styles.formContainer}>
                 <View style={styles.inputContainer}>
@@ -102,22 +92,19 @@ const LoginScreen = (props) => {
                     />
                 </View>
 
-
                 <View style={styles.forgotPassword}>
                     <TouchableOpacity onPress={() => props.navigation.navigate('ResetPasswordScreen')}>
                         <Text style={styles.forgot}>Forgot your password?</Text>
                     </TouchableOpacity>
                 </View>
 
-
-                <TouchableOpacity style={styles.AddDevice} onPress={() => props.navigation.replace('MainScreen')}>
+                <TouchableOpacity style={styles.AddDevice} onPress={handleLogin}>
                     <Text style={styles.loginText}>Login</Text>
                 </TouchableOpacity>
 
-
                 <View style={styles.row}>
                     <Text style={styles.signupText}>Don’t have an account? </Text>
-                    <TouchableOpacity onPress={() => props.navigation.replace('SignUp')}>
+                    <TouchableOpacity onPress={() => props.navigation.replace('RegisterScreen')}>
                         <Text style={styles.link}>Sign up</Text>
                     </TouchableOpacity>
                 </View>
@@ -125,7 +112,6 @@ const LoginScreen = (props) => {
         </ScrollView>
     );
 };
-
 
 const styles = StyleSheet.create({
     container: {
@@ -148,17 +134,17 @@ const styles = StyleSheet.create({
     },
     lottieAnimation: {
         width: 250,
-        height: 150,
+        height: 250,
     },
     formContainer: {
         width: '100%',
         backgroundColor: 'white',
         height: '60%',
-        padding: 20,
+        paddingTop: '10%',
         paddingHorizontal: 20,
         borderTopRightRadius: 60,
         borderTopLeftRadius: 60,
-        marginTop: 10,
+        marginTop: 30,
     },
     inputContainer: {
         marginBottom: 20,
@@ -219,7 +205,6 @@ const styles = StyleSheet.create({
         color: "#345c74",
     },
 });
-
 
 export default LoginScreen;
 

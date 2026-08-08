@@ -23,7 +23,7 @@ const CustomTabBar = ({ state, descriptors, navigation}) => {
                         ? 'home-outline'
                         : route.name === 'Add Device'
                         ? 'add-circle'
-                        : 'setting-outline';
+                        : 'settings-outline';
 
                 const onPress = () => {
                     const event = navigation.emit({ type: 'tabPress', target: route.key });

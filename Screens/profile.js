@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Clipboard, Alert, ImageBackground, TouchableOpacity, Image, BackHandler } from 'react-native';
+import { StyleSheet, Text, View, Clipboard, Alert, ImageBackground, TouchableOpacity, Image, BackHandler, ActivityIndicator } from 'react-native';
 import { useState,useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,7 +13,7 @@ export default function profile() {
     const[mobile,setmobile] = useState('N/A');
     const[securitytoken,setsecuritytoken] = useState('N/A');
     const[token,settoken] = useState(null);
-    const[loading,setLoading] = useState(true);
+    const[isloading,setLoading] = useState(true);
     const navigation = useNavigation();
     useEffect(() => {
         fetchToken().then((value) => {
@@ -79,13 +79,13 @@ export default function profile() {
             }
         }
         catch(error){
-            console.error('Error fecthing the profile:', error);
+            console.error('Error fetching the profile:', error);
 
         }
     }
     const copytoclipboard = () => {
         Clipboard.setString(securitytoken);
-        Alert.alert('copied','securitytoken has been comied to Clipboard');
+        Alert.alert('copied','securitytoken has been copied to Clipboard');
     }
 
   return (
@@ -97,6 +97,30 @@ export default function profile() {
                 </TouchableOpacity>
             </View>
             <Text style = {styles.profile}>Profile</Text>
+            {isloading?(
+                <ActivityIndicator size="large" color="white" />
+            ):(
+                <View style = {styles.Container}>
+                    <View style = {styles.box}>
+                        <Text style = {styles.Text}>Name:{name}</Text>
+                    </View>
+
+                    <View style ={styles.box}>
+                        <Text style = {styles.Text}>email:{email}</Text>
+                    </View>
+
+                    <View style ={styles.box}>
+                        <Text style = {styles.Text}>Mobile:{mobile}</Text>
+                    </View>
+
+                    <View style={style.tokenContainer}>
+                        <Text style = {styles.Text}> Security Token</Text>
+                        <TouchableOpacity style={styles.button} onPress={copytoclipboard}>
+                            <Text style = {styles.tokenText}>{securitytoken}</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            )}
         </View>
     </ImageBackground>
   );
@@ -119,7 +143,35 @@ const styles = StyleSheet.create({
   backIcon: {
     height: 15,
     width: 20,
-    
+  },
+  Container: {
+    width:'100%',
+    alignItems: 'center',
+  },
+  box:{
+    backgroundColor:'white',
+    borderRadius: 20,
+    padding:15,
+    width:'85%',
+    marginTop:20,
+    flexDirection:'row',
+    justifyContent:'space-between',
+  },
+  Text:{
+    color:'black',
+    fontSize: 18
+  },
+  tokenContainer: {
+    backgroundColor:'#f5f5f5',
+    padding:10,
+    marginTop:20,
+    width:'85%',
+    borderRadius:20,
+  },
+  tokenText:{
+    color:'green',
+    fontSize: 18,
+    textDecorationLine: 'underline',
   }
  
 });
