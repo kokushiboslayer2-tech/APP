@@ -104,7 +104,7 @@ const LoginScreen = (props) => {
 
                 <View style={styles.row}>
                     <Text style={styles.signupText}>Don’t have an account? </Text>
-                    <TouchableOpacity onPress={() => props.navigation.replace('RegisterScreen')}>
+                    <TouchableOpacity onPress={() => props.navigation.replace('SignUp')}>
                         <Text style={styles.link}>Sign up</Text>
                     </TouchableOpacity>
                 </View>

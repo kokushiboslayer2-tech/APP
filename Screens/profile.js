@@ -3,8 +3,7 @@ import { useState,useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import { Value } from 'react-native/types_generated/Libraries/Animated/AnimatedExports';
-import { ImageBackground } from 'react-native-web';
+// import { Value } from 'react-native/types_generated/Libraries/Animated/AnimatedExports';
 const Stack = createStackNavigator();
 
 export default function profile() {
@@ -113,7 +112,7 @@ export default function profile() {
                         <Text style = {styles.Text}>Mobile:{mobile}</Text>
                     </View>
 
-                    <View style={style.tokenContainer}>
+                    <View style={styles.tokenContainer}>
                         <Text style = {styles.Text}> Security Token</Text>
                         <TouchableOpacity style={styles.button} onPress={copytoclipboard}>
                             <Text style = {styles.tokenText}>{securitytoken}</Text>

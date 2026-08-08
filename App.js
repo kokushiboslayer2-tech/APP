@@ -6,6 +6,8 @@ import signup from './Screens/signupscreen';
 import details from './Screens/detailsscreens';
 import LoginScreen from './Screens/loginscreen';
 import BottomTabs from './Screens/bottomtab';
+import profile from './Screens/profile';
+import AboutUs from './Screens/AboutUs';
 
 const Stack= createStackNavigator();
 export default function App() {
@@ -16,6 +18,8 @@ export default function App() {
          <Stack.Screen name = "Details" component={details}/>
          <Stack.Screen name = "Login" component={LoginScreen}/>
          <Stack.Screen name ="MainScreen" component={BottomTabs}/>
+         <Stack.Screen name ="Profile" component={profile}/>
+         <Stack.Screen name ="AboutUs" component={AboutUs}/>
         
       </Stack.Navigator>
     </NavigationContainer>
