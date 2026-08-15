@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, RefreshControl, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, RefreshControl, Image, Dimensions, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/native';
 import { ScrollView } from "react-native";
+import { ActivityIndicator } from "react-native-web";
+import { FlatList } from "react-native-gesture-handler";
 const {width} = Dimensions.get('window');
 const Home = () => {
 
@@ -176,6 +178,25 @@ const DeviceInfo = ({
       </View>
       <View style={styles.addedDevicesHeaderContainer}>
         <Text style={styles.addedDevicesText}>Added Devices</Text>
+        <View style = {{flex:1}}>
+          {isLoading?(
+            <ActivityIndicator/>
+          ):devicesResponse && devicesResponse.length>0?(
+            <FlatList contentContainerStyle = {{paddingBottom: 10}}
+            data = {devicesResponse}
+            renderItem={renderItem}
+            keyExtractor={(item,index) => index.toString()}
+            RefreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}
+            /> 
+          ):(<View style ={styles.nodataContainer}>
+            <Image source ={require('../assets/assets/images/nodataImage.png')} style = {styles.nodataImage}/>
+            <TouchableOpacity onPress={() => {props.navigation.navigate('ChooseHardware')}} style={styles.addDeviceButton}>
+              <Text style ={styles.addDeviceText}>
+                Add Device
+              </Text>
+            </TouchableOpacity>
+          </View>)}
+        </View>
       </View>
     </ScrollView>  
   );
@@ -283,6 +304,33 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginTop: 10,
   },
+  noDataContainer: {
+    margin: 10,
+    alignSelf: 'center',
+  },
+  noDataImage: {
+    width: 300,
+    height: 200,
+    resizeMode: 'contain'
+  },
+  addDeviceButton: {
+    flexDirection: "row",
+    backgroundColor: "#f58084",
+    alignItems: "center",
+    marginTop: 20,
+    width: 120,
+    padding: 10,
+    borderRadius: 14,
+    alignSelf: "center",
+    marginBottom: 30,
+  },
+  addDeviceText: {
+    color: "#FFF",
+    fontWeight: "bold",
+    fontSize: 14,
+    textAlign: "center",
+    alignSelf: 'center',
+  }
 });   
 
 export default Home;

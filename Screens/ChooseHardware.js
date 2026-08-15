@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, Text, FlatList, TouchableOpacity, Image, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, Image, StyleSheet, ActivityIndicator, Dimensions, ImageBackground} from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const { width } = Dimensions.get('window');
 
@@ -47,35 +47,42 @@ const ChooseHardware = ({navigation}) => {
   }, []);
 
   return (
-    <View style ={styles.background}>
-
-      <Text style={styles.title}>Choose Hardware</Text>
-
-
-      {isLoading ? (
-        <ActivityIndicator color={'white'} size="Large" style={{ marginTop: 20}}/>
+    <ImageBackground source={require('../assets/assets/images/Background.png')} style={styles.background}>
+                
+                    {/* Back Button */}
+                    <View style={styles.headerContainer}>
+                        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+                            <Image source={require('../assets/assets/images/A-1.png')} style={styles.backIcon} />
+                        </TouchableOpacity>
+                    </View>
+    
+                    {/* Title */}
+                    <Text style={styles.title}>Choose Hardware</Text>
+    
+                    {/* Content */}
+                    {isLoading ? (
+        <ActivityIndicator color={'white'} size="large" style={{ marginTop: 20 }} />
       ) : (
-
         <FlatList
           data={hardwaresResponse}
           keyExtractor={(item) => item.hardware_id}
-          contentContainerStyle={styles.hardwareList}
           renderItem={({ item }) => (
             <TouchableOpacity
-              activeOpacity={0.8}
               style={styles.hardwareItem}
-              onPress={() => navigation.navigate('AddDevice', { data: item.hardware_name, h_id: item.hardware_id })
-            }
+              onPress={() => navigation.navigate('AddDevice', { data: item.hardware_name,h_id:item.hardware_id })}
             >
-              <Image source={{ uri: item.hardware_image }} style={styles.hardwareImage} />
-              <View style={styles.hardwareTextContainer}>
-                <Text style={styles.hardwareName}>{item.hardware_name}</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Image source={{ uri: item.hardware_image }} style={styles.hardwareImage} />
+                <View style={styles.hardwareTextContainer}>
+                  <Text style={styles.hardwareName}>{item.hardware_name}</Text>
+                </View>
               </View>
             </TouchableOpacity>
           )}
         />
       )}
-    </View>
+                
+            </ImageBackground>
   )
 }
 
@@ -101,5 +108,44 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     maxWidth: width * 0.8,
   },
+  background: { width: '100%', height: '100%' },
+  headerContainer: {
+    flexDirection: 'row',
+    width: '100%',
+    paddingHorizontal: 20,
+    marginTop: 20,
+    justifyContent: 'space-between',
+  },
+  backButton: {
+    paddingHorizontal: 10,
+    paddingVertical: 13,
+    borderRadius: 10,
+    marginTop: 30,
+    backgroundColor: '#d1a0a7',
+  },
+  backIcon: { width: 20, height: 15 },
+  title: {
+    color: 'white',
+    fontSize: 35,
+    fontWeight: '800',
+    textAlign: 'center',
+    marginBottom: 20,
+    marginTop: 30,
+  },
+  hardwareItem: {
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 100,
+    padding: 15,
+    marginVertical: 10,
+    marginHorizontal: 20,
+    borderRadius: 20,
+    elevation: 3,
+  },
+  hardwareImage: { width: 80, height: 80, marginRight: 15, borderRadius: 15, },
+  hardwareTextContainer: { flex: 1 },
+  hardwareName: { color: '#345c74', fontWeight: 'bold', fontSize: 20 },
+  hardwareDesc: { color: '#f58084', fontSize: 14 },
 });
 export default ChooseHardware;

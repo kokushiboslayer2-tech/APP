@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, ImageBackground, StyleSheet, Linking, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const AboutUsScreen = () => {
+const PrivacyPolicy = () => {
     const navigation = useNavigation();
 
     return (
@@ -16,21 +16,18 @@ const AboutUsScreen = () => {
                 </View>
 
                 {/* Title */}
-                <Text style={styles.title}>About Us</Text>
+                <Text style={styles.title}>Privacy Policy</Text>
 
                 {/* Content */}
                 <ScrollView style={styles.contentContainer}>
                     <Text style={styles.text}>
-                        Moonpreneur was founded in 2020 to bridge the gap in the traditional education system and prepare children for college admissions and the future workplace.
+                        This policy is in accordance with the U.S. Children’s Online Privacy Protection Act (COPPA) and outlines our practices in the United States and Latin America regarding children’s personal information.
                     </Text>
                     <Text style={styles.text}>
-                        K-12 education does not include teaching innovation and entrepreneurship, leaving students unaware of their passions until later in life.
+                        We’ll review this Privacy Policy from time to time to make sure it is up-to-date. If you are just a visitor make sure please review this Policy periodically.
                     </Text>
                     <Text style={styles.text}>
-                        The conventional education system is therefore not adequately preparing students for the future. Moonpreneur Inc is addressing this gap by kindling an innovative and entrepreneurial spirit in children.
-                    </Text>
-                    <Text style={styles.text}>
-                        It leverages that instinctive human spirit for entrepreneurship to create a learning environment for 7-16-year-olds in Tech, STEM, and soft-skills.
+                        If you are our registered user, we will notify you before we make changes to this Policy and give you the opportunity to review the revised Policy before you choose to continue using our services.
                     </Text>
 
                     {/* Website Link */}
@@ -110,4 +107,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AboutUsScreen;
+export default PrivacyPolicy;

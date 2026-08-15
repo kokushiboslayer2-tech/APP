@@ -8,6 +8,10 @@ import LoginScreen from './Screens/loginscreen';
 import BottomTabs from './Screens/bottomtab';
 import profile from './Screens/profile';
 import AboutUs from './Screens/AboutUs';
+import PrivacyPolicy from './Screens/PrivacyPolicy';
+import FAQ from './Screens/FAQ';
+import AddDevice from './Screens/AddDevice';
+import Home from './Screens/Home';
 
 const Stack= createStackNavigator();
 export default function App() {
@@ -20,6 +24,10 @@ export default function App() {
          <Stack.Screen name ="MainScreen" component={BottomTabs}/>
          <Stack.Screen name ="Profile" component={profile}/>
          <Stack.Screen name ="AboutUs" component={AboutUs}/>
+         <Stack.Screen name ="PrivacyPolicy" component={PrivacyPolicy}/>
+         <Stack.Screen name ="FAQ" component={FAQ}/>
+         <Stack.Screen name ="AddDevice" component={AddDevice}/>
+         <Stack.Screen name ="Home" component={Home}/>
         
       </Stack.Navigator>
     </NavigationContainer>

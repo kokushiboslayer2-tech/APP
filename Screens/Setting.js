@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 const SettingOptions = [
   {id:'1', title:'Profile', screen:'Profile'},
   {id:'2', title:'AboutUs', screen:'AboutUs'},
-  {id:'3', title:'Privacy Policy', screen:'Privacy Policy'},
+  {id:'3', title:'PrivacyPolicy', screen:'PrivacyPolicy'},
   {id:'4', title:'FAQ', screen:'FAQ'},
   
 ]

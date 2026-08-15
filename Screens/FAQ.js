@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, ImageBackground, StyleSheet, Linking, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const AboutUsScreen = () => {
+const FAQ = () => {
     const navigation = useNavigation();
 
     return (
@@ -16,21 +16,25 @@ const AboutUsScreen = () => {
                 </View>
 
                 {/* Title */}
-                <Text style={styles.title}>About Us</Text>
+                <Text style={styles.title}>FAQ</Text>
 
                 {/* Content */}
                 <ScrollView style={styles.contentContainer}>
                     <Text style={styles.text}>
-                        Moonpreneur was founded in 2020 to bridge the gap in the traditional education system and prepare children for college admissions and the future workplace.
+                       How do I create an account?
+                       --- click on sign up once u create it then login with those credentials.
                     </Text>
                     <Text style={styles.text}>
-                        K-12 education does not include teaching innovation and entrepreneurship, leaving students unaware of their passions until later in life.
+                       Can I use the app on multiple devices?
+                       --- yes you can use it on multiple devices as long as you have your credentials!
                     </Text>
                     <Text style={styles.text}>
-                        The conventional education system is therefore not adequately preparing students for the future. Moonpreneur Inc is addressing this gap by kindling an innovative and entrepreneurial spirit in children.
+                        Is the app free to use? 
+                        --- yes the App is free to use!
                     </Text>
                     <Text style={styles.text}>
-                        It leverages that instinctive human spirit for entrepreneurship to create a learning environment for 7-16-year-olds in Tech, STEM, and soft-skills.
+                        Can I use the app without creating an account?
+                        - No, unfortunatley you have to create a account to use the app.
                     </Text>
 
                     {/* Website Link */}
@@ -110,4 +114,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AboutUsScreen;
+export default FAQ;
