@@ -7,7 +7,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 const Stack = createStackNavigator();
 const SettingOptions = [
   {id:'1', title:'Profile', screen:'Profile'},
-  {id:'2', title:'About Us', screen:'About Us'},
+  {id:'2', title:'AboutUs', screen:'AboutUs'},
   {id:'3', title:'Privacy Policy', screen:'Privacy Policy'},
   {id:'4', title:'FAQ', screen:'FAQ'},
   
