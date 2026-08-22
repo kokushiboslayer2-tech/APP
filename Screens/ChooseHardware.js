@@ -25,7 +25,7 @@ const ChooseHardware = ({navigation}) => {
       if (!apiToken) return;
 
       try {
-        const response = await fetch('https://moonhub.moonpreneur.com/LMSService/api/IOT/GetHardwares', {
+        const response = await fetch('https://test.moonr.com/LMSService/api/IOT/GetHardwares', {
           method: 'GET',
           headers: { 'Authorization': `Bearer ${apiToken}` },
         });

@@ -56,7 +56,7 @@ export default function Profile() {
     const fetchUserProfile = async(token) => {
         if(!token)return;
         try{
-            const url = 'https://moonhub.moonpreneur.com/LMSService/api/IOT/UserProfile';
+            const url = 'https://test.moonr.com/LMSService/api/IOT/UserProfile';
             const Response = await fetch(url,{
                 method:'GET',
                 headers:{'Authorization':`Bearer${token}`},

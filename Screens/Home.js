@@ -41,7 +41,7 @@ const Home = () => {
   const fetchDevices = async (apiToken) => {
     console.log(apiToken)
     try {
-      const apiURL = 'https://moonhub.moonpreneur.com/LMSService/api/IOT/GetDevices';
+      const apiURL = 'https://test.moonr.com/LMSService/api/IOT/GetDevices';
 
       const response = await fetch(apiURL, {
         method: 'POST',

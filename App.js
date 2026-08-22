@@ -12,6 +12,7 @@ import PrivacyPolicy from './Screens/PrivacyPolicy';
 import FAQ from './Screens/FAQ';
 import AddDevice from './Screens/AddDevice';
 import Home from './Screens/Home';
+import Sensorcontrol from './Screens/Sensorcontrol';
 
 const Stack= createStackNavigator();
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
          <Stack.Screen name ="FAQ" component={FAQ}/>
          <Stack.Screen name ="AddDevice" component={AddDevice}/>
          <Stack.Screen name ="Home" component={Home}/>
+         <Stack.Screen name ="Sensorcontrol" component={Sensorcontrol}/>
         
       </Stack.Navigator>
     </NavigationContainer>
