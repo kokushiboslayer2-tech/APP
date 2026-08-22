@@ -6,7 +6,7 @@ import signup from './Screens/signupscreen';
 import details from './Screens/detailsscreens';
 import LoginScreen from './Screens/loginscreen';
 import BottomTabs from './Screens/bottomtab';
-import profile from './Screens/profile';
+import Profile from './Screens/Profile';
 import AboutUs from './Screens/AboutUs';
 import PrivacyPolicy from './Screens/PrivacyPolicy';
 import FAQ from './Screens/FAQ';
@@ -22,7 +22,7 @@ export default function App() {
          <Stack.Screen name = "Details" component={details}/>
          <Stack.Screen name = "Login" component={LoginScreen}/>
          <Stack.Screen name ="MainScreen" component={BottomTabs}/>
-         <Stack.Screen name ="Profile" component={profile}/>
+         <Stack.Screen name ="Profile" component={Profile}/>
          <Stack.Screen name ="AboutUs" component={AboutUs}/>
          <Stack.Screen name ="PrivacyPolicy" component={PrivacyPolicy}/>
          <Stack.Screen name ="FAQ" component={FAQ}/>

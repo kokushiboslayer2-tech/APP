@@ -19,7 +19,7 @@ const LoginScreen = (props) => {
 
     const handleLogin = async () => {
         try {
-            const apiUrl = 'http://moonhub.moonpreneur.com/LMSService/api/Account/getUserToken';
+            const apiUrl = 'https://moonhub.moonpreneur.com/LMSService/api/Account/getUserToken';
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {

@@ -33,7 +33,7 @@ export default function DeviceControl({navigation,route}) {
     const fetchUserProfile = async(token) => {
         if(!token)return;
         try{
-            const Response = await fetch('https://test.moonr.com/LMSService/api/IOT/UserProfile',{
+            const Response = await fetch('https://moonhub.moonpreneur.com/LMSService/api/IOT/UserProfile',{
                 method:'GET',
                 headers:{'Authorization': `Bearer${token}`}
             });
@@ -53,7 +53,7 @@ export default function DeviceControl({navigation,route}) {
     const fetchComponents = async(apiToken) => {
         fetchUser(apiToken);
         try{
-            const response = await fetch(`https://test.moonr.com/LMSService/api/IOT/GetDeviceComponents?user_device_id=${device.user_device_id}`, {
+            const response = await fetch(`https://moonhub.moonpreneur.com/LMSService/api/IOT/GetDeviceComponents?user_device_id=${device.user_device_id}`, {
                 method:'GET',
                 headers:{
                     'Authorization': `Bearer${apiToken}`,
@@ -90,7 +90,7 @@ export default function DeviceControl({navigation,route}) {
         };
         console.log("updaterequest", JSON.stringify(requestbody));
         try {
-            const response = await fetch('https://moonr.com/LMSService/api/IOTDevice/UpdateComponentStatus', {
+            const response = await fetch('https://moonhub.moonpreneur.com/LMSService/api/IOTDevice/UpdateComponentStatus', {
                 method: 'POST',
                 headers: {
                     'user-token': securitytoken,
@@ -154,7 +154,7 @@ export default function DeviceControl({navigation,route}) {
         console.log("request data:", componentdata);
 
         try{
-          const response = await fetch('https://moonr.com/LMSService/api/IOT/AddUpdateComponent', {
+          const response = await fetch('https://moonhub.moonpreneur.com/LMSService/api/IOT/AddUpdateComponent', {
             method: 'POST',
             headers:{
               'Authorization': `Bearer ${token}`,
@@ -202,7 +202,7 @@ export default function DeviceControl({navigation,route}) {
         is_active:0
       };
       try{
-        const response = await fetch('https://moonr.com/LMSService/api/IOT/AddUpdateComponent', {
+        const response = await fetch('https://moonhub.moonpreneur.com/LMSService/api/IOT/AddUpdateComponent', {
           method: 'POST',
           headers:{
           'Authorization': `Bearer ${token}`,

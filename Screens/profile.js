@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 // import { Value } from 'react-native/types_generated/Libraries/Animated/AnimatedExports';
 const Stack = createStackNavigator();
 
-export default function profile() {
+export default function Profile() {
     const[name,setname] = useState('N/A');
     const[email,setemail] = useState('N/A');
     const[mobile,setmobile] = useState('N/A');
@@ -56,7 +56,7 @@ export default function profile() {
     const fetchUserProfile = async(token) => {
         if(!token)return;
         try{
-            const url = 'https://test.moonr.com/LMSService/api/IOT/UserProfile';
+            const url = 'https://moonhub.moonpreneur.com/LMSService/api/IOT/UserProfile';
             const Response = await fetch(url,{
                 method:'GET',
                 headers:{'Authorization':`Bearer${token}`},
