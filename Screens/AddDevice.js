@@ -65,7 +65,7 @@ const handleAddDevice = async () => {
     };
     console.log('AddUpdateDevice payload:', payload);
     const response = await fetch(
-      'https://test.moonr.com/LMSService/api/IOT/AddUpdateDevice',
+      'http://moonhub.moonpreneur.com/LMSService/api/IOT/AddUpdateDevice',
       {
         method: 'POST',
         headers: {

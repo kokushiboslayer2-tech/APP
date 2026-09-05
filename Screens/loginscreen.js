@@ -19,7 +19,7 @@ const LoginScreen = (props) => {
 
     const handleLogin = async () => {
         try {
-            const apiUrl = 'https://test.moonr.com/LMSService/api/Account/getUserToken';
+            const apiUrl = 'http://moonhub.moonpreneur.com/LMSService/api/Account/getUserToken';
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -44,7 +44,7 @@ const LoginScreen = (props) => {
             if (result.statusCode === 200 && result.result && result.result.length > 0) {
                 await AsyncStorage.setItem('loginResponse', JSON.stringify(result));
                 console.log(result);
-                props.navigation.navigate("MainScreen");
+                props.navigation.navigate("Home");
             } else {
                 console.error("Login failed");
             }
@@ -61,7 +61,7 @@ const LoginScreen = (props) => {
                 <Text style={styles.headerText}>Login</Text>
                 <LottieView
                     autoPlay
-                    source={require('../assets/assets/images/LoginAnimation.json')}
+                    source={require('../assets/assets/images/loginAnime.json')}
                     style={styles.lottieAnimation}
                 />
             </View>
@@ -104,7 +104,7 @@ const LoginScreen = (props) => {
 
                 <View style={styles.row}>
                     <Text style={styles.signupText}>Don’t have an account? </Text>
-                    <TouchableOpacity onPress={() => props.navigation.replace('SignUp')}>
+                    <TouchableOpacity onPress={() => props.navigation.replace('RegisterScreen')}>
                         <Text style={styles.link}>Sign up</Text>
                     </TouchableOpacity>
                 </View>
@@ -207,4 +207,3 @@ const styles = StyleSheet.create({
 });
 
 export default LoginScreen;
-
