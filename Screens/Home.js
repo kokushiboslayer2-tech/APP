@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, RefreshControl, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, RefreshControl, Image, Dimensions, TouchableOpacity, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/native';
 import { ScrollView } from "react-native";
-import { ActivityIndicator } from "react-native-web";
 import { FlatList } from "react-native-gesture-handler";
 const {width} = Dimensions.get('window');
-const Home = () => {
+const Home = (props) => {
 
   const isFocused = useIsFocused();
   const [isLoading, setIsLoading] = useState(true);
@@ -116,7 +115,7 @@ const DeviceInfo = ({
 }) => (
   <TouchableOpacity style={styles.deviceInfoContainer}
     onPress={() => {
-      props.navigation.navigate("DeviceDetail", { screenName: 'Home', deviceI: item, param3: token });
+      props.navigation.navigate("details", { screenName: 'Home', deviceI: item, param3: token });
       console.log(item)
       console.log(device_hardware);
     }}
@@ -148,57 +147,61 @@ const DeviceInfo = ({
   </TouchableOpacity>
 );
 
-  return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#f9f9f9', }} refreshControl={
-      <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-    }>
-      <View style={styles.headerContainer}>
-        <View style={styles.headerContent}>
-          <View style={styles.welcomeTextContainer}>
-            <Text style={styles.welcomeText}>
-               Welcome Home,
-            </Text>
-            <Text style={styles.userNameText}> {user} </Text>
+   return (
+    <FlatList
+      style={{ flex: 1, backgroundColor: '#f9f9f9' }}
+      contentContainerStyle={{ paddingBottom: 10 }}
+      data={isLoading ? [] : (devicesResponse || [])}
+      renderItem={renderItem}
+      keyExtractor={(item, index) => index.toString()}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+      ListHeaderComponent={() => (
+        <>
+          <View style={styles.headerContainer}>
+            <View style={styles.headerContent}>
+              <View style={styles.welcomeTextContainer}>
+                <Text style={styles.welcomeText}>
+                   Welcome Home,
+                </Text>
+                <Text style={styles.userNameText}> {user} </Text>
+              </View>
+            </View>
           </View>
-        </View>
-      </View>
-      <View style={styles.box}>
-        <View>
-          <Text style={styles.boxText}>
-            Start Controlling Your Devices
-          </Text>
-          <View style={styles.boxButton}>
-            <Text style={styles.boxButtonText}>Let's go!</Text>
+          <View style={styles.box}>
+            <View>
+              <Text style={styles.boxText}>
+                Start Controlling Your Devices
+              </Text>
+              <View style={styles.boxButton}>
+                <Text style={styles.boxButtonText}>Let's go!</Text>
+              </View>
+            </View>
+            <Image
+              source={require('../assets/assets/images/nodata.png')}
+              style={styles.boxImage}
+            />
           </View>
-        </View>
-        <Image
-          source={require('../assets/assets/images/nodata.png')}
-          style={styles.boxImage}
-        />
-      </View>
-      <View style={styles.addedDevicesHeaderContainer}>
-        <Text style={styles.addedDevicesText}>Added Devices</Text>
-        <View style = {{flex:1}}>
-          {isLoading?(
-            <ActivityIndicator/>
-          ):devicesResponse && devicesResponse.length>0?(
-            <FlatList contentContainerStyle = {{paddingBottom: 10}}
-            data = {devicesResponse}
-            renderItem={renderItem}
-            keyExtractor={(item,index) => index.toString()}
-            RefreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}
-            /> 
-          ):(<View style ={styles.nodataContainer}>
-            <Image source ={require('../assets/assets/images/nodataImage.png')} style = {styles.nodataImage}/>
-            <TouchableOpacity onPress={() => {props.navigation.navigate('ChooseHardware')}} style={styles.addDeviceButton}>
-              <Text style ={styles.addDeviceText}>
+          <View style={styles.addedDevicesHeaderContainer}>
+            <Text style={styles.addedDevicesText}>Added Devices</Text>
+          </View>
+          {isLoading ? <ActivityIndicator style={{ marginTop: 10 }} /> : null}
+        </>
+      )}
+      ListEmptyComponent={() => (
+        isLoading ? null : (
+          <View style={styles.nodataContainer}>
+            <Image source={require('../assets/assets/images/nodataImage.png')} style={styles.nodataImage} />
+            <TouchableOpacity onPress={() => { props.navigation.navigate('ChooseHardware') }} style={styles.addDeviceButton}>
+              <Text style={styles.addDeviceText}>
                 Add Device
               </Text>
             </TouchableOpacity>
-          </View>)}
-        </View>
-      </View>
-    </ScrollView>  
+          </View>
+        )
+      )}
+    />
   );
 };
 
