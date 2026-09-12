@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 35,
     fontWeight: '700',
-    color: '#0f2051',
+    color: '#0e2c88',
    textAlign: 'center',
    marginBottom: 40,
   },
@@ -192,14 +192,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   label: {
-    color: '#0f2051',
+    color: '#112d81',
     fontSize: 16,
     marginBottom: 8,
     fontWeight: '600',
   },
   input: {
     backgroundColor: '#ffffff',
-    color: '#0f2051',
+    color: '#112c80',
     borderRadius: 12,
     paddingHorizontal: 16,
     paddingVertical: 14,
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     borderColor: '#0f205130',
   },
   addButton: {
-    backgroundColor: '#0f2051',
+    backgroundColor: '#0b31a3',
     paddingVertical: 16,
     borderRadius: 12,
     alignItems: 'center',
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
   iconLabel:{
     marginTop: 8,
     fontSize: 14,
-    color: '#0f2051',
+    color: '#193aa0',
     fontWeight: '500'
   },
   selectedIconLabel:{

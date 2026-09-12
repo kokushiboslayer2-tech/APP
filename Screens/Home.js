@@ -150,7 +150,7 @@ const DeviceInfo = ({
    return (
     <FlatList
       style={{ flex: 1, backgroundColor: '#f9f9f9' }}
-      contentContainerStyle={{ paddingBottom: 10 }}
+      contentContainerStyle={{ paddingBottom: 120 }}
       data={isLoading ? [] : (devicesResponse || [])}
       renderItem={renderItem}
       keyExtractor={(item, index) => index.toString()}
@@ -174,9 +174,9 @@ const DeviceInfo = ({
               <Text style={styles.boxText}>
                 Start Controlling Your Devices
               </Text>
-              <View style={styles.boxButton}>
+              <TouchableOpacity onPress={() => { props.navigation.navigate('Add Device') }} style={styles.boxButton}>
                 <Text style={styles.boxButtonText}>Let's go!</Text>
-              </View>
+              </TouchableOpacity>
             </View>
             <Image
               source={require('../assets/assets/images/nodata.png')}
@@ -193,7 +193,7 @@ const DeviceInfo = ({
         isLoading ? null : (
           <View style={styles.nodataContainer}>
             <Image source={require('../assets/assets/images/nodataImage.png')} style={styles.nodataImage} />
-            <TouchableOpacity onPress={() => { props.navigation.navigate('ChooseHardware') }} style={styles.addDeviceButton}>
+            <TouchableOpacity onPress={() => { props.navigation.navigate('AddDevice') }} style={styles.addDeviceButton}>
               <Text style={styles.addDeviceText}>
                 Add Device
               </Text>
@@ -209,7 +209,7 @@ const DeviceInfo = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fffdfd',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal:24,

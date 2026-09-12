@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   tabLabel: {
     fontSize: 14,
     marginTop: 8,
-    color: '#AAB1C6',
+    color: '#909cbe',
     fontWeight: 'bold',
   },
 
