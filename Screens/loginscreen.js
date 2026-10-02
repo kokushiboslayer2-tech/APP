@@ -14,8 +14,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const { height, width } = Dimensions.get("window");
 
 const LoginScreen = (props) => {
-    const [username, setUsername] = useState({ value: 'anurag.mscint230301001', error: '' });
-    const [password, setPassword] = useState({ value: 'an@12345', error: '' });
+    const [username, setUsername] = useState({ value: 'Avanish.MSJCR0639', error: '' });
+    const [password, setPassword] = useState({ value: '', error: '' });
 
     const handleLogin = async () => {
         try {
