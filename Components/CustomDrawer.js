@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   option: { flexDirection: 'row', marginBottom: 10 },
   optionText: { fontWeight: "bold", marginLeft: 5, color: '#f58084', marginTop: 3, fontSize: 14 },
   rbSheetContainer: {
-    backgroundColor: "#f58084", borderTopRightRadius: 70, borderTopLeftRadius: 70,
+    backgroundColor: "#f5af80", borderTopRightRadius: 70, borderTopLeftRadius: 70,
     paddingVertical: 30, height: '50%',
   },
   sheetContent: { alignItems: 'center' },

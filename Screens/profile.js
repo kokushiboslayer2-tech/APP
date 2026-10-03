@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     paddingVertical: 13,
     borderRadius: 10,
     marginTop: 30,
-    backgroundColor: '#d1a0a7',
+    backgroundColor: '#c7d7e2',
   },
   backIcon: {
     height: 15,
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   box:{
-    backgroundColor:'white',
+    backgroundColor:'#c7d7e2',
     borderRadius: 20,
     padding:15,
     width:'85%',
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   tokenContainer: {
-    backgroundColor:'#f5f5f5',
+    backgroundColor:'#c7d7e2',
     padding:10,
     marginTop:20,
     width:'85%',

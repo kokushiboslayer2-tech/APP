@@ -103,9 +103,9 @@ const LoginScreen = (props) => {
                 </TouchableOpacity>
 
                 <View style={styles.row}>
-                    <Text style={styles.signupText}>Don’t have an account? </Text>
+                    <Text style={styles.signupText}> </Text>
                     <TouchableOpacity onPress={() => props.navigation.replace('RegisterScreen')}>
-                        <Text style={styles.link}>Sign up</Text>
+                        <Text style={styles.link}></Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         height: height * 0.35,
         width: '100%',
         alignItems: 'center',
-        marginTop: '25%',
+        marginTop: '5%',
         alignSelf: 'center',
     },
     headerText: {
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
         fontWeight: "500",
     },
     AddDevice: {
-        backgroundColor: '#F18C8E',
+        backgroundColor: '#ce9495',
         width: '100%',
         height: 60,
         borderRadius: 30,

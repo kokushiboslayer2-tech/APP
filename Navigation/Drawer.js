@@ -4,9 +4,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from "@expo/vector-icons";
 import HomeNew from '../Screens/Home';
 import ChooseHardware from '../Screens/ChooseHardware';
-import Profile from '../Screens/profile';
+import Profile from '../Screens/Profile';
 import PrivacyPolicy from '../Screens/PrivacyPolicy';
-import CustomDrawer from '../Components/CustomDrawer';
+import CustomDrawer from '../components/CustomDrawer';
 import Settings from '../Screens/Setting';
 import FAQScreen from '../Screens/FAQ';
 import AboutUsScreen from '../Screens/AboutUs';
@@ -19,8 +19,8 @@ export default function DrawerScreen() {
 
         <Drawer.Navigator initialRouteName='Home' drawerContent={(props) => <CustomDrawer{...props} />}
             screenOptions={{
-                drawerActiveBackgroundColor: '#f58084', drawerActiveTintColor: 'white',
-                drawerInactiveTintColor: '#f58084', drawerLabelStyle: { marginLeft: -5, fontWeight: "bold", }
+                drawerActiveBackgroundColor: '#6fb5dd', drawerActiveTintColor: 'white',
+                drawerInactiveTintColor: '#000000', drawerLabelStyle: { marginLeft: -5, fontWeight: "bold", }
             }}
         >
             <Drawer.Screen name="Home" component={HomeNew} initialParams={{ initialRoute: true }} options={{

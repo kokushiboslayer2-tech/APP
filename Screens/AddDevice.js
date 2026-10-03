@@ -15,15 +15,15 @@ const AddDevice = (props) => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
     const deviceImages = useMemo(() => ([
-      { id: '0', name: 'Fan', image: require('../assets/assets/AppIcons/Fan.png') },
-      { id: '1', name: 'AC', image: require('../assets/assets/AppIcons/AC.png') },
-      { id: '2', name: 'Bulb', image: require('../assets/assets/AppIcons/Bulb.png') },
-      { id: '3', name: 'Speaker', image: require('../assets/assets/AppIcons/Speaker.png') },
-      { id: '4', name: 'Charger', image: require('../assets/assets/AppIcons/Charging.png') },
-      { id: '5', name: 'Smart Door', image: require('../assets/assets/AppIcons/smartdoor.png') },
-      { id: '6', name: 'TV', image: require('../assets/assets/AppIcons/tv.png') },
-      { id: '7', name: 'Security', image: require('../assets/assets/AppIcons/securitysystem.png') },
-      { id: '8', name: 'Vacuum', image: require('../assets/assets/AppIcons/robotvaccum.png') },
+      { id: '0',deviceTypeId:1, name: 'Fan', image: require('../assets/assets/AppIcons/Fan.png') },
+      { id: '1',deviceTypeId:2, name: 'AC', image: require('../assets/assets/AppIcons/AC.png') },
+      { id: '2',deviceTypeId:3, name: 'Bulb', image: require('../assets/assets/AppIcons/Bulb.png') },
+      { id: '3',deviceTypeId:4, name: 'Speaker', image: require('../assets/assets/AppIcons/Speaker.png') },
+      { id: '4',deviceTypeId:5, name: 'Charger', image: require('../assets/assets/AppIcons/Charging.png') },
+      { id: '5',deviceTypeId:6, name: 'Smart Door', image: require('../assets/assets/AppIcons/smartdoor.png') },
+      { id: '6',deviceTypeId:7, name: 'TV', image: require('../assets/assets/AppIcons/tv.png') },
+      { id: '7',deviceTypeId:8, name: 'Security', image: require('../assets/assets/AppIcons/securitysystem.png') },
+      { id: '8',deviceTypeId:9, name: 'Vacuum', image: require('../assets/assets/AppIcons/robotvaccum.png') },
       // { id: '9', name: 'Others', image: require('../assets/AppIcons/Others.png') },
     ]), []);
 
@@ -50,11 +50,11 @@ const handleAddDevice = async () => {
 
   try {
     const payload = {
-      device_id: parseInt(selectedImageIndex),
+      device_id:deviceImages[selectedImageIndex].deviceTypeId,
       user_device_id: 0,
-      user_device_name: deviceName,
+      user_device_name: deviceName.trim(),
       connection_type_id: 1,
-      hardware_id: h_id,
+      hardware_id: Number(h_id),
       status: false,
       is_active: 0,
       roomids: '4,5',
@@ -65,7 +65,7 @@ const handleAddDevice = async () => {
     };
     console.log('AddUpdateDevice payload:', payload);
     const response = await fetch(
-      'http://moonhub.moonpreneur.com/LMSService/api/IOT/AddUpdateDevice',
+      'https://moonhub.moonpreneur.com/LMSService/api/IOT/AddUpdateDevice',
       {
         method: 'POST',
         headers: {

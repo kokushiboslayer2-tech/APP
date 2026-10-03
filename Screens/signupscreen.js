@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     borderWidth:2,
     alignItems:"center",
     padding:20,
-    backgroundColor:'#aaf0c9'
+    backgroundColor:'#ace0c3'
   },
   Heading: {
     fontSize:23,

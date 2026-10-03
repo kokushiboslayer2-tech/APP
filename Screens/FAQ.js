@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     text: {
-        color: '#333',
+        color: '#3f0101',
         fontSize: 16,
         fontFamily: 'serif',
         textAlign: 'justify', 

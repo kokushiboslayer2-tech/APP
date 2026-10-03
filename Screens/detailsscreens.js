@@ -1,28 +1,52 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
-
-export default function DetailsScreens() {
-    const [user,setUser]=useState(null);
-    useEffect(()=>{
-        const getData = async()=>{
-            const data = await AsyncStorage.getItem('userDetails');
-            if(data){
-                setUser(JSON.parse(data));
-            }
-        };
-        getData();
+import axios from 'axios';
+import { ImageBackground } from 'react-native-web';
+export default function DetailsScreens({navigation,route}) {
+  const {screenName, device1} = route.params;
+    const [screen,setScreen] = useState(screenName);
+    const [responses,setResponses] = useState([]);
+    const [token,setToken] = useState('');
+    const device = screen === 'AddDevice'?responses:device1;
+    useEffect(() => {
+      fetchToken();
     },[]);
-    if(!user)
-        return null;
+    const fetchToken = async() => {
+      try{
+        const storeResponses = await AsyncStorage.getItem('loginResponse');
+        if(storeResponses) {
+          const parsedResponse = JSON.parse(storeResponses);
+          const newToken = parsedResponse.result[0].token;
+          setToken(newToken);
+        }
+      }
+      catch(error){
+        console.error('Error Retreving Token from AsyncStorage:',error);
+      }
+    }
+    const Handledelete = async () => {
+      Alert.alert('Confirm Delete?','Are You sure?? (:/)', 
+        [{text:'Cancel', style:'cancel'}, 
+          {text:'Delete', onPress: async() => {
+            try{
+              const response = await axios.post(`https://moonhub.moonpreneur.com/LMSService/api/IOT/DeleteDeviceById?user_device_id=${device.user_device_id}`,{},
+                {headers:{Authorization:`Bearer ${token}`}}
+              ); 
+              if(response.status === 200){
+                navigation.navigate('Drawer')
+              }
+            }
+            catch(error){
+              console.error('Failed to Delete Device:',error)
+            }
+          }}
+        ]
+      )
+    }
   return (
-    <View style={styles.container}>
-      <Text style= {styles.userDetail}>user Details</Text>
-      <Text style= {styles.userName}>Name:{user.name}</Text>
-      <Text style= {styles.userName}>Email:{user.email}</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ImageBackground source = {require('../assets/assets/images/Background.png')}></ImageBackground>
   );
 }
 

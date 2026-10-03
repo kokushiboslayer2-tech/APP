@@ -46,7 +46,7 @@ const ChooseHardware = ({ navigation }) => {
   }, []);
 
   return (
-    <ImageBackground source={require('../assets/assets/images/Background.png')} style={styles.background}>
+    <ImageBackground source={require('../assets/assets/images/Pink.png')} style={styles.background}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <Image source={require('../assets/assets/images/A-1.png')} style={styles.backIcon} />
@@ -63,7 +63,7 @@ const ChooseHardware = ({ navigation }) => {
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.hardwareItem}
-              onPress={() => navigation.navigate('AddDevice', { data: item.hardware_name })}
+              onPress={() => navigation.navigate('AddDevice', { data: item.hardware_name, h_id: item.hardware_id })}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Image source={{ uri: item.hardware_image }} style={styles.hardwareImage} />
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   hardwareImage: { width: 80, height: 80, marginRight: 15, borderRadius: 15, },
   hardwareTextContainer: { flex: 1 },
   hardwareName: { color: '#345c74', fontWeight: 'bold', fontSize: 20 },
-  hardwareDesc: { color: '#f58084', fontSize: 14 },
+  hardwareDesc: { color: '#bd9091', fontSize: 14 },
 });
 
 export default ChooseHardware;
